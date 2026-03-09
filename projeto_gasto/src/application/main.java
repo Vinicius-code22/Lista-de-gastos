@@ -19,6 +19,8 @@ public class main {
 		
 		
 		int choice = 0;
+		
+		// Cria uma interface no terminal e repete até o usuario encerrar o programa /
 		while (choice != 5) {
 		
 			
