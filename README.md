@@ -43,4 +43,4 @@ Total: R$ 80.00
 
 ## 📌 Autor
 
-Vinícius Rodrigues
+Vinícius Viana
