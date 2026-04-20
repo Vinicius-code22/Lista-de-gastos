@@ -20,24 +20,32 @@ public class Main {
 		
 		List<Expenses> list = new ArrayList<>();
 		
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			
+		ExpensesServices.criarArquivos();
 		
-		
+		ExpensesServices.lerDados(list);
 		
 		int choice = 0;
-		
 		while (choice != 4) {
 		
 			
-			System.out.println("[1] Adicionar");
-			System.out.println("[2] Listar");
-			System.out.println("[3] Extrato");
+			System.out.println("\n===== MENU =====");
+			System.out.println("[1] Adicionar gasto");
+			System.out.println("[2] Listar gastos");
+			System.out.println("[3] Ver extrato");
 			System.out.println("[4] Sair");
 			System.out.println();
 			
 			
 			System.out.print("Escolha a operação: ");
-			choice = scan.nextInt();
+			if (scan.hasNextInt()) {
+				choice = scan.nextInt();
+			}
+			else {
+				System.out.println("Entrada invalida!");
+				scan.nextLine();
+				continue;
+			}
 			
 			switch (choice) {
 			case 1:
@@ -52,9 +60,10 @@ public class Main {
 					
 						System.out.print("Digite uma data (dd/MM/yyyy): ");
 						String entrada = scan.nextLine();
-						LocalDate date = LocalDate.parse(entrada, fmt);
+						LocalDate date = LocalDate.parse(entrada);
 					
 						ExpensesServices.adicionarGasto(list, valor, description, date);
+						ExpensesServices.atualizar(list);
 					}
 					catch (InputMismatchException a) {
 						System.out.println("Valor invalido!");
@@ -75,6 +84,8 @@ public class Main {
 				break;	
 			case 4:
 					System.out.println("Programa finalizado.");
+					
+					
 				
 			break;
 			default:
@@ -84,6 +95,9 @@ public class Main {
 			}
 		
 		}
+		
+		
+		
 
 			
 			

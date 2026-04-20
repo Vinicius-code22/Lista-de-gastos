@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Expenses {
 
@@ -8,6 +9,9 @@ public class Expenses {
 	private String description;
 	private LocalDate date;
 	
+	
+	public static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 	public Expenses() {
 	}
 	
@@ -36,7 +40,11 @@ public class Expenses {
 
 	@Override
 	public String toString() {
-	    return String.format("R$%.2f | %s | %s", valor, description, date);
+		return String.format("R$ %-10.2f | %-20s | %s",
+			    valor,
+			    description,
+			    date.format(fmt)
+			);
 	}
 	
 }
